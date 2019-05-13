@@ -32,12 +32,14 @@ export default class Server {
         this.io.on('connection', (cliente: socketIO.Socket) => {
 
             // Conectar Cliente
-            socket.conectarCliente( cliente );
+            socket.conectarCliente( cliente, this.io );
             // confiruar usuario
             socket.configurarUsuario( cliente, this.io );
             //Desconectar
-            socket.desconectar( cliente );
+            socket.desconectar( cliente, this.io );
             socket.mensaje( cliente, this.io );
+
+            socket.obtenerUsurio(cliente, this.io);
 
         })
 
